@@ -1,79 +1,28 @@
 # sbpaulsen.no
 
-Min personlige nettside, der jeg samler prosjektene mine. Mest for moro skyld.
+Hei! Jeg heter Sander og bor i Oslo. Dette er min personlige nettside, et sted der jeg samler prosjektene jeg holder på med. Mest for moro skyld, men også for å lære underveis.
 
-Siden er bygget som et lite filsystem: et mappetre til venstre, en filsti øverst og innholdet til høyre. Den har to deler:
+Siden er laget for å føles som et lite filsystem. Du blar deg gjennom mapper og åpner filer, litt som i Finder eller en kodeeditor.
 
-- **Hjem** – kort intro om meg og de mest aktuelle prosjektene.
-- **Prosjekter** – alle prosjektene samlet, med status og sist oppdatert.
+## Hva jeg holder på med
 
-> Status: under oppbygging. Repoet inneholder foreløpig bare denne filen og `.gitignore`. SvelteKit-oppsettet kommer i neste steg.
+**Et fond på 100 000 kr.** Jeg driver mitt eget lille makro-/aksjefond, inspirert av Stanley Druckenmiller og George Soros. Planen er å skrive ned hypotesen før hver handel, starte lite og føre dagbok i sanntid, så jeg kan se i ettertid hva jeg faktisk tenkte. Akkurat nå står alt i kontanter, og jeg leser *The Alchemy of Finance*. Ingenting her er investeringsråd.
 
-## Prosjekter
+**NM i AI.** Jeg er påmeldt Norgesmesterskapet i AI. Her logger jeg forberedelsene og det jeg lærer.
 
-| Prosjekt | Hva det er | Status |
-| --- | --- | --- |
-| `fond-100k` | Et makro-/aksjefond på 100 000 kr, drevet etter Stanley Druckenmiller og George Soros. Regler, posisjoner og investeringsdagbok. Ingenting her er investeringsråd. | aktiv |
-| `nm-i-ai` | Forberedelser og logg mot Norgesmesterskapet i AI. | aktiv |
-| `pokerbot` | Heads-up no-limit Texas Hold'em-bot, inspirert av Citadels pokerbot-turnering. | planlegges |
+**En pokerbot.** Inspirert av Citadels pokerbot-turnering bygger jeg en bot som spiller heads-up no-limit Texas Hold'em. Først en spillmotor, så odds, så en enkel regelbasert bot, og til slutt (forhåpentligvis) en bot som lærer av å spille mot seg selv.
 
-## Teknologi
+## Status
 
-- [SvelteKit](https://svelte.dev/docs/kit) med `@sveltejs/adapter-static` (siden bygges til vanlige statiske filer)
-- Hostes gratis på GitHub Pages
-- Publiseres automatisk med GitHub Actions ved push til `main`
-- Domene: sbpaulsen.no
+Siden er helt i startgropen. Akkurat nå finnes bare denne filen og en plan. Resten kommer steg for steg.
 
-## Kjøre siden lokalt
+## For meg selv
 
-Du trenger [Node.js](https://nodejs.org/) (LTS-versjonen).
+Teknisk oppsett, designplan og regler for prosjektene står i [CLAUDE.md](CLAUDE.md). Kort fortalt:
 
 ```sh
-npm install      # installerer avhengigheter (første gang)
-npm run dev      # starter siden på http://localhost:5173
-npm run build    # bygger den ferdige siden til mappen build/
-```
-
-## Publisere en endring
-
-```sh
+npm run dev      # se siden lokalt
 git add .
-git commit -m "Kort beskrivelse av endringen"
-git push
+git commit -m "Hva jeg endret"
+git push         # publiserer til sbpaulsen.no
 ```
-
-Når endringen er pushet til `main`, bygger GitHub Actions siden og legger den ut på sbpaulsen.no etter et par minutter.
-
-## Mappestruktur (planlagt)
-
-```
-src/
-├── routes/
-│   ├── +layout.svelte         felles layout: mappetre, filsti, bunntekst
-│   ├── +page.svelte           hjem
-│   └── prosjekter/            oversikt og hvert prosjekt
-└── lib/
-    ├── components/            gjenbrukbare deler
-    └── data/
-        └── prosjekter/        én datafil per prosjekt
-static/
-└── CNAME                      kobler GitHub Pages til sbpaulsen.no
-```
-
-## Legge til et nytt prosjekt
-
-Lag en ny datafil i `src/lib/data/prosjekter/` med navn, kort beskrivelse, status, dato og filer. Prosjektet dukker da opp i mappetreet og i oversikten uten at layouten må endres.
-
-## Python-prosjekter
-
-Analyse og kode (f.eks. for fondet og pokerboten) lages i Jupyter notebooks og vanlige `.py`-filer, med samme struktur i hvert prosjekt:
-
-```
-<prosjekt>/
-├── notebooks/   utforsking og analyse
-├── src/         gjenbrukbar Python-kode
-├── data/        rådata og bearbeidede data
-└── README.md    hva prosjektet er og hvordan det kjøres
-```
-
-Nettsiden viser bare de ferdige resultatene; den regner ingenting ut selv.
